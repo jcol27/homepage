@@ -143,6 +143,10 @@
                     const searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchText.slice(3));
                     window.location.href = searchUrl;
                 }
+                else if ((searchText.includes('.com') || ) && !(searchText.includes(' '))) {
+                    const searchUrl = 'https://' + encodeURIComponent(searchText.slice(3));
+                    window.location.href = searchUrl;                    
+                }
                 else {
                     const searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchText);
                     window.location.href = searchUrl;            
