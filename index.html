@@ -145,7 +145,7 @@
                     window.location.href = searchUrl;
                 }
                 else if ((searchText.includes('.com') || searchText.includes('.org') || searchText.includes('.net')) && !(searchText.includes(' ')) && !(searchText.includes('site:'))) {
-                    const searchUrl = 'https://' + encodeURIComponent(searchText);
+                    const searchUrl = 'https://' + searchText;
                     window.location.href = searchUrl;                    
                 }
                 else {
