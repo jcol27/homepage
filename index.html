@@ -130,6 +130,7 @@
 
         function search() {
             const searchText = searchInput.value.trim();
+            console.log("searchText = '" + searchText + "'")
             if (searchText !== '') {
                 if (searchText.startsWith('-w ')) {
                     const searchUrl = 'https://en.wikipedia.org/wiki/Special:Search?search=' + encodeURIComponent(searchText.slice(3));
@@ -143,7 +144,7 @@
                     const searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchText.slice(3));
                     window.location.href = searchUrl;
                 }
-                else if ((searchText.includes('.com') || searchText.includes('.org') || searchText.includes('.net')) && !(searchText.includes(' '))) {
+                else if ((searchText.includes('.com') || searchText.includes('.org') || searchText.includes('.net')) && !(searchText.includes(' ')) && !(searchText.includes('site:'))) {
                     const searchUrl = 'https://' + encodeURIComponent(searchText.slice(3));
                     window.location.href = searchUrl;                    
                 }
