@@ -54,7 +54,7 @@
 
         .search-bar input {
             width: 100%;
-            font-size: 36px;
+            font-size: 44px;
             border-radius: 5px;
         }
 
@@ -85,9 +85,6 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
     </style>
-    <h1 class="title">
-        Homepage
-    </h1>
     <div class="container">
         <div class="search-bar">
             <input type="text" placeholder="Google: -g, Wikipedia: -w, DuckDuckGo: -d" autofocus>
@@ -101,6 +98,7 @@
         </div>
         <div class="column">
             <h3 class="linkcolumnheader">Football</h3>
+            <a href="https://academy.coachesvoice.com/catalog">Coaches Voice Catalog</a>
             <a href="https://www.coachesvoice.com/category/analysis/">Coaches Voice Analysis</a>
             <a href="https://www.coachesvoice.com/category/coaching-knowledge/">Coaches Voice Knowledge</a>
             <a href="https://totalfootballanalysis.com/">Total Football Analysis</a>
@@ -124,6 +122,14 @@
         </div>
     </div>
     <script>
+        const shortcutArray = [
+            ["mess", 'https://facebook.com/messages/'],
+            ["what", 'https://web.whatsapp.com/'],
+            ["yt", "https://youtube.com"], 
+        ]
+        const shortcutMap = new Map(shortcutArray);
+
+
         document.addEventListener("DOMContentLoaded", function() {
         const searchInput = document.querySelector('.search-bar input');
         searchInput.value = "";
@@ -132,7 +138,11 @@
             const searchText = searchInput.value.trim();
             console.log("searchText = '" + searchText + "'")
             if (searchText !== '') {
-                if (searchText.startsWith('-w ')) {
+                if (searchText in shortcutMap.keys()) {
+                    const searchUrl = shortcutMap[searchText];
+                    window.location.href = searchUrl;
+                }
+                else if (searchText.startsWith('-w ')) {
                     const searchUrl = 'https://en.wikipedia.org/wiki/Special:Search?search=' + encodeURIComponent(searchText.slice(3));
                     window.location.href = searchUrl;
                 }
@@ -146,6 +156,7 @@
                 }
                 else if (searchText.startsWith('r/')) {
                     const searchUrl = 'https://reddit.com/' + encodeURIComponent(searchText);
+                    window.location.href = searchUrl;
                 }
                 else if ((searchText.includes('.com') || searchText.includes('.org') || searchText.includes('.net')) && !(searchText.includes(' ')) && !(searchText.includes('site:'))) {
                     if (!searchText.includes('https://')) {
