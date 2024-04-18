@@ -159,14 +159,14 @@
                     window.location.href = searchUrl;
                 }
                 else if ((searchText.includes('.com') || searchText.includes('.org') || searchText.includes('.net')) && !(searchText.includes(' ')) && !(searchText.includes('site:'))) {
-                    const searchUrl = null;
                     if (!searchText.includes('https://')) {
-                        searchUrl = 'https://' + searchText;
+                        const searchUrl = 'https://' + searchText;
+                        window.location.href = searchUrl;  
                     } 
                     else {
-                        searchUrl = searchText;
-                    }
-                    window.location.href = searchUrl;                    
+                        const searchUrl = searchText;
+                        window.location.href = searchUrl;  
+                    }                  
                 }
                 else {
                     const searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchText);
