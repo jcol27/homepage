@@ -159,11 +159,12 @@
                     window.location.href = searchUrl;
                 }
                 else if ((searchText.includes('.com') || searchText.includes('.org') || searchText.includes('.net')) && !(searchText.includes(' ')) && !(searchText.includes('site:'))) {
+                    const searchUrl = null;
                     if (!searchText.includes('https://')) {
-                        const searchUrl = 'https://' + searchText;
+                        searchUrl = 'https://' + searchText;
                     } 
                     else {
-                        const searchUrl = searchText;
+                        searchUrl = searchText;
                     }
                     window.location.href = searchUrl;                    
                 }
